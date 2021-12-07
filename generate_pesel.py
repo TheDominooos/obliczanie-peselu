@@ -10,14 +10,24 @@ class GeneratePesel:
         self.female = female
 
     def generate_pesel(self):
-        if self.year >= 2200:
-            self.month += 60
-        elif self.year >= 2100:
-            self.month += 40
-        elif self.year >= 2000:
-            self.month += 20
-        elif self.month >= 1800 and self.month <= 1899:
+        # if not 1 <= self.month <= 12:
+        #     quit("Błędny miesiąc!")
+        # if not 1 <= self.day <= 31:
+        #     quit("Błędny dzień!")
+
+        if 1800 <= self.year <= 1899:
             self.month += 80
+        elif 1900 <= self.year <= 1999:
+            pass
+        elif 2000 <= self.year <= 2099:
+            self.month += 20
+        elif 2100 <= self.year <= 2199:
+            self.month += 40
+        elif 2200 <= self.year <= 2299:
+            self.month += 60
+        else:
+            quit("Błędny rok!")
+
         self.year = self.year % 100
         if self.male:
             pppp = random.randrange(1, 10000, 2)

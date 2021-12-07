@@ -29,8 +29,10 @@ class CheckPesel:
             century_of_birth = 21
             month_of_birth = int(month_of_birth) - 40
         else:
-            quit("Błędne cyfry miesiąca!")
+            quit("Błędny miesiąć!")
 
+        if not 1 <= day_of_birth <= 31:
+            quit("Błędny dzień!")
         control_number = 0
         index = 0
 
