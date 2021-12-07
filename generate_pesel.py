@@ -10,10 +10,10 @@ class GeneratePesel:
         self.female = female
 
     def generate_pesel(self):
-        # if not 1 <= self.month <= 12:
-        #     quit("Błędny miesiąc!")
-        # if not 1 <= self.day <= 31:
-        #     quit("Błędny dzień!")
+        if not 1 <= self.month <= 12:
+            quit("Błędny miesiąc!")
+        if not 1 <= self.day <= 31:
+            quit("Błędny dzień!")
 
         if 1800 <= self.year <= 1899:
             self.month += 80
