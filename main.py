@@ -20,9 +20,9 @@ def generate(day, month, year, male, female):
 
 
 @pesel.command()
-@click.argument("pesel", type=str)
-def check(pesel):
-    checker = CheckPesel(pesel)
+@click.argument("pid", type=str)
+def check(pid):
+    checker = CheckPesel(pid)
     birthdate, gender, control_number = checker.check_pesel()
     print("Data urodzenia: %s" % (birthdate))
     print("Płeć: %s" % (gender))
