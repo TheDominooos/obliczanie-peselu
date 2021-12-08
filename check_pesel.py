@@ -34,7 +34,6 @@ class CheckPesel:
         if not 1 <= day_of_birth <= 31:
             raise ValueError("Błędny dzień!")
         control_number = 0
-        index = 0
 
         for index, number in enumerate(self.pid):
             if index == 0 or index == 4 or index == 8:

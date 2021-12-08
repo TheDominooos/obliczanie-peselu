@@ -36,7 +36,6 @@ class GeneratePesel:
 
         pid = str("%02d%02d%02d%04d" % (self.year, self.month, self.day, pppp))
         control_number = 0
-        index = 0
 
         for index, number in enumerate(pid):
             if index == 0 or index == 4 or index == 8:
