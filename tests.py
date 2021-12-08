@@ -1,4 +1,5 @@
-from typing import BinaryIO
+from click.testing import CliRunner
+from main import *
 from check_pesel import *
 from generate_pesel import *
 
@@ -52,3 +53,18 @@ def test_checker_gender():
 def test_checker_control_number():
     if control_number != 7:
         assert False, "test failed because control number=%d" % (control_number)
+
+
+def test_click_check():
+    runner = CliRunner()
+    result = runner.invoke(check, ["04262507017"])
+    assert "Data urodzenia: 25.6.2004" in result.output
+    assert "Płeć: mężczyzna" in result.output
+    assert "Liczba kontrolna: 7" in result.output
+
+
+def test_click_generate():
+    runner = CliRunner()
+    result = runner.invoke(generate, ["25", "6", "2004", "-male"])
+    assert "Wygenerowany pesel: " in result.output
+    assert "042625" in result.output[20:26]

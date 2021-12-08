@@ -11,9 +11,9 @@ class GeneratePesel:
 
     def generate_pesel(self):
         if not 1 <= self.month <= 12:
-            quit("Błędny miesiąc!")
+            raise ValueError("Błędny miesiąc!")
         if not 1 <= self.day <= 31:
-            quit("Błędny dzień!")
+            raise ValueError("Błędny dzień!")
 
         if 1800 <= self.year <= 1899:
             self.month += 80
@@ -26,7 +26,7 @@ class GeneratePesel:
         elif 2200 <= self.year <= 2299:
             self.month += 60
         else:
-            quit("Błędny rok!")
+            raise ValueError("Błędny rok!")
 
         self.year = self.year % 100
         if self.male:
@@ -38,7 +38,7 @@ class GeneratePesel:
         control_number = 0
         index = 0
 
-        for number in pid:
+        for index, number in enumerate(pid):
             if index == 0 or index == 4 or index == 8:
                 control_number += (int(number) * 1) % 10
             if index == 1 or index == 5 or index == 9:
@@ -47,7 +47,6 @@ class GeneratePesel:
                 control_number += (int(number) * 7) % 10
             if index == 3 or index == 7:
                 control_number += (int(number) * 9) % 10
-            index += 1
         control_number = control_number % 10
         control_number = 10 - control_number
         pid = pid + str(control_number % 10)

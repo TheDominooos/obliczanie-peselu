@@ -24,7 +24,7 @@ def generate(day, month, year, male, female):
 def check(pid):
     checker = CheckPesel(pid)
     birthdate, gender, control_number = checker.check_pesel()
-    print("Data urodzenia: %s" % (birthdate))
+    click.echo("Data urodzenia: %s" % (birthdate))
     print("Płeć: %s" % (gender))
     print("Liczba kontrolna: %d" % (control_number))
 

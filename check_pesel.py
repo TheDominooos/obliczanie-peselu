@@ -4,9 +4,9 @@ class CheckPesel:
 
     def check_pesel(self):
         if len(self.pid) != 11:
-            quit("Błędna ilość znaków w peselu!")
+            raise ValueError("Błędna ilość znaków w peselu!")
         if not (self.pid).isdigit():
-            quit("Pesel może zawierać tylko cyfry")
+            raise ValueError("Pesel może zawierać tylko cyfry")
 
         year_of_birth = self.pid[0:2]
         month_of_birth = int(self.pid[2:4])
@@ -29,14 +29,14 @@ class CheckPesel:
             century_of_birth = 21
             month_of_birth = int(month_of_birth) - 40
         else:
-            quit("Błędny miesiąć!")
+            raise ValueError("Błędny miesiąc!")
 
         if not 1 <= day_of_birth <= 31:
-            quit("Błędny dzień!")
+            raise ValueError("Błędny dzień!")
         control_number = 0
         index = 0
 
-        for number in self.pid:
+        for index, number in enumerate(self.pid):
             if index == 0 or index == 4 or index == 8:
                 control_number += (int(number) * 1) % 10
             if index == 1 or index == 5 or index == 9:
@@ -45,11 +45,10 @@ class CheckPesel:
                 control_number += (int(number) * 7) % 10
             if index == 3 or index == 7:
                 control_number += (int(number) * 9) % 10
-            index += 1
         control_number = 10 - (control_number % 10)
 
         if control_number != int(self.pid[10]):
-            quit("Liczba kontrolna się nie zgadza!")
+            raise ValueError("Liczba kontrolna się nie zgadza!")
         birthdate = "%d.%d.%d%s" % (
             day_of_birth,
             month_of_birth,
