@@ -26,7 +26,7 @@ def check(pid):
     birthdate, gender, control_number = checker.check_pesel()
     click.echo("Data urodzenia: %s" % (birthdate))
     print("Płeć: %s" % (gender))
-    print("Liczba kontrolna: %d" % (control_number))
+    print("Liczba kontrolna: %s" % (control_number))
 
 
 if __name__ == "__main__":
