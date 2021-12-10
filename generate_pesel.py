@@ -1,6 +1,6 @@
 import random
 from check_day import *
-from generate_control_number import GenerateControlNumber
+from generate_control_number import *  # czy import moze byc w dwoch plikach
 
 
 class GeneratePesel:

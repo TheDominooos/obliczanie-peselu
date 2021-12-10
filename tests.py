@@ -54,6 +54,16 @@ def test_checker_gender():
         assert False, "test failed because gender=%s" % (gender)
 
 
+def test_checker_results():
+    birthdate, gender, control_number = checker.check_pesel()
+    if not birthdate == "25.6.2004" and gender == "mężczyzna" and control_number == "7":
+        assert False, "test failed because results are %s %s %s" % (
+            birthdate,
+            gender,
+            control_number,
+        )
+
+
 # TESTING MAIN.PY CLICK FUNCTIONALITY
 
 
@@ -79,6 +89,11 @@ def test_day_checker():
     day_checker = CheckDay(29, 2, 2000)
     day_checker.check_day()
     assert True
+
+
+def test_leap_year():
+    day_checker = CheckDay(29, 2, 2000)
+    assert day_checker.check_leap_year()
 
 
 # TESTING CONTROL NUMBER GENERATOR

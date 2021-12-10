@@ -6,9 +6,6 @@ class CheckPesel:
     def __init__(self, pid):
         self.pid = pid
 
-    def check_day(self):
-        pass
-
     def check_month(self, month_of_birth):
         if 81 <= month_of_birth <= 92:
             century_of_birth = 18
